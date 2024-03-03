@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://dwfspvqjpxis5"]
+
+[ext_resource type="Script" path="res://defense_tower.gd" id="1_nfr4y"]
+[ext_resource type="Texture2D" uid="uid://cq73h4i1acoaa" path="res://Sprite/Turret/base.png" id="2_k3alc"]
+[ext_resource type="Texture2D" uid="uid://b6emi2odavfr2" path="res://Sprite/Turret/nozzle.png" id="3_j05so"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc10r"]
+atlas = ExtResource("3_j05so")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxemf"]
+atlas = ExtResource("3_j05so")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjvi0"]
+atlas = ExtResource("3_j05so")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhgtq"]
+atlas = ExtResource("3_j05so")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bro0w"]
+atlas = ExtResource("3_j05so")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwkwo"]
+atlas = ExtResource("3_j05so")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkpcw"]
+atlas = ExtResource("3_j05so")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0324"]
+atlas = ExtResource("3_j05so")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v78y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc10r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxemf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjvi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhgtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bro0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwkwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkpcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0324")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ly3v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_03y55"]
+radius = 1e+07
+
+[node name="turret" type="CharacterBody2D"]
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(5, 5)
+script = ExtResource("1_nfr4y")
+metadata/_edit_group_ = true
+
+[node name="base" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_k3alc")
+
+[node name="nozzle" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4.8)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_v78y0")
+autoplay = "default"
+frame_progress = 0.372169
+
+[node name="object_range" type="Marker2D" parent="nozzle"]
+
+[node name="base_area" type="CollisionShape2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("RectangleShape2D_0ly3v")
+
+[node name="fire_range" type="Area2D" parent="."]
+
+[node name="fire_range_colli" type="CollisionShape2D" parent="fire_range"]
+shape = SubResource("CircleShape2D_03y55")
+
+[connection signal="body_entered" from="fire_range" to="." method="_on_fire_range_body_entered"]
+[connection signal="body_exited" from="fire_range" to="." method="_on_fire_range_body_exited"]

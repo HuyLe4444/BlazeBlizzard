@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://k0w55mjli5ma"]
+
+[sub_resource type="Curve" id="Curve_b60o1"]
+_data = [Vector2(0.0166205, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.608181), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="rain" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(611, -28)
+amount = 150
+lifetime = 2.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(800, 1)
+gravity = Vector2(300, 980)
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_b60o1")

@@ -1,0 +1,129 @@
+[gd_scene load_steps=18 format=3 uid="uid://ch0by8airfflh"]
+
+[ext_resource type="Script" path="res://Scene/frost_guard.gd" id="1_a1kvj"]
+[ext_resource type="Texture2D" uid="uid://l5o7xe2w3t21" path="res://frost_guardian_free-Sheet.png" id="2_lugi1"]
+[ext_resource type="AudioStream" uid="uid://85x80x8uamau" path="res://Music/SFX/Fire Attack.wav" id="3_rrab0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjeef"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(0, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdd52"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(192, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j0yg"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(384, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhr4g"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(576, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0dp0"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(768, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olntq"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(960, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ut4"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(1152, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhbqj"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(1344, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oqwi"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(1536, 0, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnxrr"]
+atlas = ExtResource("2_lugi1")
+region = Rect2(1728, 0, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mflel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjeef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdd52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j0yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhr4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0dp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olntq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ut4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhbqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oqwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnxrr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_0ntux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12p3p"]
+size = Vector2(12, 12.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv02q"]
+size = Vector2(49.3333, 65.3333)
+
+[node name="FrostGuard" type="CharacterBody2D"]
+light_mask = 0
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_a1kvj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -50.6667
+offset_right = 20.0
+offset_bottom = -45.6667
+value = 100.0
+show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mflel")
+autoplay = "default"
+frame_progress = 0.291092
+script = SubResource("GDScript_0ntux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1.33334)
+shape = SubResource("RectangleShape2D_12p3p")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.66667, 2.66667)
+shape = SubResource("RectangleShape2D_dv02q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rrab0")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

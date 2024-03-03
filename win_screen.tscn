@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqco4kiew7qlh"]
+
+[ext_resource type="FontFile" uid="uid://d07qxj4rr5twm" path="res://UI_theme/Pixeboy-z8XGD.ttf" id="1_4onfr"]
+[ext_resource type="StyleBox" uid="uid://lyqnshax22ny" path="res://UI_theme/button_setting_default.tres" id="2_vp0lk"]
+[ext_resource type="Texture2D" uid="uid://qxmvd1cro1mx" path="res://UI_theme/frame_0_delay-s.jpg" id="3_qaa3c"]
+[ext_resource type="FontFile" uid="uid://b252s0cd4vwx3" path="res://UI_theme/ARCADECLASSIC.ttf" id="4_s8dxp"]
+
+[sub_resource type="Theme" id="Theme_kbtmf"]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_4onfr")
+Button/styles/normal = ExtResource("2_vp0lk")
+
+[sub_resource type="Theme" id="Theme_m6rhe"]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_4onfr")
+Button/styles/normal = ExtResource("2_vp0lk")
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("4_s8dxp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_urdq7"]
+font_size = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kbtmf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qaa3c")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 138.0
+offset_right = 311.0
+offset_bottom = 187.0
+theme = SubResource("Theme_m6rhe")
+text = "Congratulation, heroes.
+you   successfully   defended   your   home !!!"
+label_settings = SubResource("LabelSettings_urdq7")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 208.0
+offset_right = 232.0
+offset_bottom = 248.0
+text = "main menu"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 392.0
+offset_bottom = 248.0
+text = "quit"

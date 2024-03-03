@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://wnrxf1yb00cv"]
+
+[ext_resource type="Script" path="res://Scene/SceneHandler.gd" id="1_c2wwn"]
+[ext_resource type="PackedScene" uid="uid://dke7aqih6sm5o" path="res://Scene/main_menu.tscn" id="2_o0agq"]
+[ext_resource type="PackedScene" uid="uid://544jjdj2t5x6" path="res://Scene/settings_menu.tscn" id="3_fxh5q"]
+[ext_resource type="PackedScene" uid="uid://b0rbwl1c2yycb" path="res://Scene/game_over_menu.tscn" id="4_ghiaq"]
+
+[node name="SceneHandler" type="Node"]
+script = ExtResource("1_c2wwn")
+
+[node name="Main Menu" parent="." instance=ExtResource("2_o0agq")]
+
+[node name="settings menu" parent="." instance=ExtResource("3_fxh5q")]
+
+[node name="GameOverMenu" parent="." instance=ExtResource("4_ghiaq")]

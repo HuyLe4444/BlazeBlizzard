@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://v6aegu6e04gp"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_5x7pm"]
+[ext_resource type="Texture2D" uid="uid://dobgecek5ere5" path="res://Sprite/Tile/Snow_0.png" id="1_tkljo"]
+[ext_resource type="PackedScene" uid="uid://k0w55mjli5ma" path="res://Particle/rain.tscn" id="3_qlqgt"]
+[ext_resource type="PackedScene" uid="uid://bq6uj3y50vwb7" path="res://Scene/tower.tscn" id="4_3bran"]
+[ext_resource type="PackedScene" uid="uid://sth3l03w4cul" path="res://Scene/timer.tscn" id="7_5avmn"]
+[ext_resource type="PackedScene" uid="uid://dd3xl6y6ksym4" path="res://Scene/cursor.tscn" id="7_8o7p1"]
+[ext_resource type="Texture2D" uid="uid://cnyhdjwnd6heu" path="res://Sprite/Tile/light.png" id="8_b3ilx"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5x7pm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1295.0
+offset_bottom = 734.0
+texture = ExtResource("1_tkljo")
+stretch_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Tower" parent="." instance=ExtResource("4_3bran")]
+position = Vector2(640, 360)
+
+[node name="Button" type="Button" parent="."]
+offset_right = 86.0
+offset_bottom = 31.0
+text = "Upgrade"
+
+[node name="PointLight2D" type="PointLight2D" parent="Button"]
+position = Vector2(43.5, 16)
+scale = Vector2(0.228516, 0.09375)
+color = Color(0.866667, 0.8, 0.807843, 1)
+texture = ExtResource("8_b3ilx")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 1110.0
+offset_top = 4.0
+offset_right = 1273.0
+offset_bottom = 56.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Label"]
+position = Vector2(57, 15)
+scale = Vector2(0.328125, 0.0804688)
+color = Color(0.866667, 0.8, 0.807843, 1)
+texture = ExtResource("8_b3ilx")
+
+[node name="Cursor" parent="." instance=ExtResource("7_8o7p1")]
+position = Vector2(1006, 501)
+metadata/_edit_group_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Cursor"]
+position = Vector2(-7.62939e-06, -2.99999)
+scale = Vector2(1.07788, 1.10937)
+color = Color(0.866667, 0.8, 0.807843, 1)
+texture = ExtResource("8_b3ilx")
+metadata/_edit_group_ = true
+
+[node name="rain" parent="." instance=ExtResource("3_qlqgt")]
+modulate = Color(0.454902, 1, 0.8, 1)
+self_modulate = Color(0.486275, 1, 0.839216, 1)
+visibility_layer = 524289
+position = Vector2(71, 15)
+
+[node name="Control" parent="." instance=ExtResource("7_5avmn")]
+offset_left = 618.0
+offset_top = 10.0
+offset_right = 630.0
+offset_bottom = 10.0
+
+[node name="PointLight2D" type="PointLight2D" parent="Control"]
+position = Vector2(37.25, 14)
+scale = Vector2(0.459961, 0.0957031)
+color = Color(0.866667, 0.8, 0.807843, 1)
+texture = ExtResource("8_b3ilx")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
